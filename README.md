@@ -19,6 +19,7 @@ With this insight, the developer can quantify how much the codebase correctly mo
 
 indddy uses [java-parser](https://github.com/jhipster/prettier-java/tree/master/packages/java-parser) to build Concrete Syntax Tree from Java files,
 collects type identifiers that describe:
+
 - fields
 - variables
 - parameters
@@ -32,7 +33,23 @@ In the project directory:
 
 `npm install` to install required dependencies
 
-`node parse.js` to parse stdin
+Parse one Java source from stdin:
+
+`node parse.js < path/to/File.java`
+
+Parse all `.java` files in a directory (recursive):
+
+`node parseDir.js src`
+
+If no directory is provided, `parseDir.js` uses `src` by default.
+
+`parseDir.js` outputs aggregated frequencies sorted by descending count:
+
+```shell
+  42 Customer
+  31 Order
+  18 Money
+```
 
 ### As a dependency
 
@@ -51,6 +68,7 @@ Just create this `package.json` file at the root of the project:
   }
 }
 ```
+
 Run `npm install`
 
 and then it becomes possible to use the `ddd` command in a script in your projects:
@@ -75,6 +93,7 @@ $ cat HelloWorldExample.java | npx ddd | sort | uniq -c | sort -nr
 ### How to release a new version
 
 I recommend using [np](https://github.com/sindresorhus/np) to publish a new release
+
 ```shell
 npx np major
 npx np minor
