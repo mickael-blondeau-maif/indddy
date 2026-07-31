@@ -30,9 +30,11 @@ function scanDirectory(dir) {
 
 scanDirectory(rootDir);
 
+let total = 0;
 const freqMap = new Map();
 allTokens.forEach(token => {
     freqMap.set(token, (freqMap.get(token) || 0) + 1);
+    total++;
 });
 
 // Tri par fréquence décroissante
